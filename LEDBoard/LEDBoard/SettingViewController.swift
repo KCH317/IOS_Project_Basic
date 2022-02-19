@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LEDBoardSettingDelegate: AnyObject{
+    func changedSetting(text: String?, textColor: UIColor, backgroundColor: UIColor)
+}
+
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
@@ -19,35 +23,62 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var blueButton: UIButton!
     @IBOutlet weak var orangeButton: UIButton!
     
+    weak var delegate: LEDBoardSettingDelegate?
+    var ledText: String?
+    var textColor: UIColor = .yellow
+    var backgroundColor: UIColor = .black
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureView()
     }
     
+    
+    private func configureView() {
+        if let ledText = self.ledText {
+            self.textField.text = ledText
+        }
+        self.changeTextColorButton(color: self.textColor)
+        self.changeBackgroundColorButton(color: self.backgroundColor)
+    }
  
     
     @IBAction func tapTextColorButton(_ sender: UIButton) {
         if sender == yellowButton {
             self.changeTextColorButton(color: .yellow)
+            self.textColor = .yellow
         } else if sender == purpleButton {
             self.changeTextColorButton(color: .purple)
+            self.textColor = .purple
         } else {
             self.changeTextColorButton(color: .green)
+            self.textColor = .green
         }
     }
     
     @IBAction func tapBackgroundColorButton(_ sender: UIButton) {
         if sender == blackButton {
             self.changeBackgroundColorButton(color: .black)
+            self.backgroundColor = .black
         } else if sender == blueButton {
             self.changeBackgroundColorButton(color: .blue)
+            self.backgroundColor = .blue
         } else {
             self.changeBackgroundColorButton(color: .orange)
+            self.backgroundColor = .orange
         }
     }
     
     @IBAction func tapSaveButton(_ sender: Any) {
-
+        self.delegate?.changedSetting(
+            text: self.textField.text,
+            textColor: self.textColor,
+            backgroundColor: self.backgroundColor
+        )
+        self.navigationController?.popViewController(animated: true)
+        
     }
     
     /**
