@@ -50,16 +50,17 @@ class WriteDiaryViewController: UIViewController {
         self.datePicker.datePickerMode = .date
         self.datePicker.preferredDatePickerStyle = .wheels
         self.datePicker.addTarget(self, action: #selector(datePickerValueDidChange(_:)), for: .valueChanged)
-        self.datePicker.locale = Locale(identifier: "ko-KR")
+        self.datePicker.locale = Locale(identifier: "ko_KR")
         self.dateTextField.inputView = self.datePicker
         
     }
 
     @IBAction func tapConfirmButton(_ sender: UIBarButtonItem) {
-        guard let title = self.titleTextField.text else {return}
-        guard let contents = self.contentsTextView.text else {return}
-        guard let date = self.diaryDate else {return}
+        guard let title = self.titleTextField.text else { return }
+        guard let contents = self.contentsTextView.text else { return }
+        guard let date = self.diaryDate else { return }
         let diary = Diary(title: title, contents: contents, date: date, isStar: false )
+        self.delegate?.didSelectRegister(diary: diary)
         self.navigationController?.popViewController(animated: true)
         
         
@@ -68,7 +69,7 @@ class WriteDiaryViewController: UIViewController {
     @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
         let formmater = DateFormatter()
         formmater.dateFormat = "yyyy년 MM월 dd일(EEEEEE)"
-        formmater.locale = Locale(identifier: "ko-KR")
+        formmater.locale = Locale(identifier: "ko_KR")
         self.diaryDate = datePicker.date
         self.dateTextField.text = formmater.string(from: datePicker.date)
         self.dateTextField.sendActions(for: .editingChanged)
