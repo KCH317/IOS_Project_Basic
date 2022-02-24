@@ -93,6 +93,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="nHX-Ta-9t5" id="YRz-I8-brx"/>
+                                            <outlet property="titleLabel" destination="10w-Ye-t16" id="BpK-d6-1Q8"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -113,6 +117,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="K2G-Fn-sH3" id="6hQ-iO-MAf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,8 +196,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="일기 작성" id="muO-V4-JNg">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="F6b-Je-ERQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="F6b-Je-ERQ">
+                            <connections>
+                                <action selector="tapConfirmButton:" destination="pkZ-B8-65W" id="bU7-4d-eiM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmButton" destination="F6b-Je-ERQ" id="rSc-Ai-sdY"/>
+                        <outlet property="contentsTextView" destination="APd-gD-KbU" id="Uby-rD-kvJ"/>
+                        <outlet property="dateTextField" destination="ZfT-6P-KOE" id="mhr-SU-kYS"/>
+                        <outlet property="titleTextField" destination="31m-sB-OyP" id="Uqv-5A-pa7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qb2-aI-uIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,7 +385,6 @@
         <!--즐겨찾기 -->
         <scene sceneID="Zar-ek-WrS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HTz-b7-M8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="cjz-df-ddp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="즐겨찾기 " image="star" catalog="system" selectedImage="star.fill" id="AVO-J2-16f"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W2u-go-oQ5">
@@ -379,6 +395,7 @@
                         <segue destination="Cd0-nL-hUb" kind="relationship" relationship="rootViewController" id="gPR-Rs-krv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HTz-b7-M8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-352" y="496"/>
         </scene>

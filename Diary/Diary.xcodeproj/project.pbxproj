@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA7BB1E327C7BB64004BFDE9 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7BB1E227C7BB64004BFDE9 /* Diary.swift */; };
 		FAB44C5827C660B2004B5EE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB44C5727C660B2004B5EE3 /* AppDelegate.swift */; };
 		FAB44C5A27C660B2004B5EE3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB44C5927C660B2004B5EE3 /* SceneDelegate.swift */; };
 		FAB44C5C27C660B2004B5EE3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB44C5B27C660B2004B5EE3 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA7BB1E227C7BB64004BFDE9 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		FAB44C5427C660B2004B5EE3 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB44C5727C660B2004B5EE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB44C5927C660B2004B5EE3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				FAB44C6F27C67EFB004B5EE3 /* StarCell.swift */,
 				FAB44C7127C68158004B5EE3 /* WriteDiaryViewController.swift */,
 				FAB44C7327C681B2004B5EE3 /* DiaryDetailViewController.swift */,
+				FA7BB1E227C7BB64004BFDE9 /* Diary.swift */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				FAB44C7027C67EFB004B5EE3 /* StarCell.swift in Sources */,
 				FAB44C5827C660B2004B5EE3 /* AppDelegate.swift in Sources */,
 				FAB44C5A27C660B2004B5EE3 /* SceneDelegate.swift in Sources */,
+				FA7BB1E327C7BB64004BFDE9 /* Diary.swift in Sources */,
 				FAB44C7427C681B2004B5EE3 /* DiaryDetailViewController.swift in Sources */,
 				FAB44C6C27C67D45004B5EE3 /* DiaryCell.swift in Sources */,
 				FAB44C6E27C67DCA004B5EE3 /* StarViewController.swift in Sources */,
