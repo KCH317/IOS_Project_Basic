@@ -68,10 +68,10 @@ class ViewController: UIViewController {
     }
     
     private func dateToString(date: Date) -> String{
-        let formmater = DateFormatter()
-        formmater.dateFormat = "yy년 MM월 dd일(EEEEE)"
-        formmater.locale = Locale(identifier: "ko_KR")
-        return formmater.string(from: date)
+        let formater = DateFormatter()
+        formater.dateFormat = "yy년 MM월 dd일(EEEEE)"
+        formater.locale = Locale(identifier: "ko_KR")
+        return formater.string(from: date)
     }
 }
 
@@ -101,6 +101,7 @@ extension ViewController: UICollectionViewDelegate {
         let diary = self.diaryList[indexPath.row]
         viewController.diary = diary
         viewController.indexPath = indexPath
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -109,5 +110,13 @@ extension ViewController: WriteDiaryViewDelegate {
     func didSelectRegister(diary: Diary) {
         self.diaryList.append(diary)
         self.collectionView.reloadData()
+    }
+}
+
+
+extension ViewController: DiaryDetailViewDelegate {
+    func didSelectDelete(indexPath: IndexPath) {
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
 }
