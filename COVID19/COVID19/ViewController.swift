@@ -16,11 +16,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var newCaseLabel: UILabel!
     @IBOutlet weak var pieChartView: PieChartView!
     
+    @IBOutlet weak var labelStackView: UIStackView!
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.indicatorView.startAnimating() // 인디케이터 애니메이션 실행
         self.fetchCovidOverview(completionHandler: {
             [weak self] result in
             guard let self = self else { return }
+            self.indicatorView.stopAnimating() // 인디케이터 애니메이션 중지
+            self.indicatorView.isHidden = true
+            self.labelStackView.isHidden = false
+            self.pieChartView.isHidden = false
+            
             switch result {
             case let .success(result):
 //                debugPrint("success \(result)")
@@ -36,6 +45,7 @@ class ViewController: UIViewController {
     
     // 파이차트에 표시
     func configureChatView(covidOverviewList: [CovidOverview]){
+        self.pieChartView.delegate = self
         let entries = covidOverviewList.compactMap{
             [weak self] overview -> PieChartDataEntry? in
             guard let self = self else { return nil }
@@ -131,3 +141,11 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: ChartViewDelegate{
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        guard let covidDetailViewController = self.storyboard?.instantiateViewController(identifier: "CovidDetailViewController") as? CovidDetailViewController else {return}
+        guard let covidOverview = entry.data as? CovidOverview else {return}
+        covidDetailViewController.covidOverview = covidOverview
+        self.navigationController?.pushViewController(covidDetailViewController, animated: true)
+    }
+}
